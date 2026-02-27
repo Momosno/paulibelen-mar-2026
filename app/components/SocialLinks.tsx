@@ -17,6 +17,7 @@ interface SocialLink {
   urls?: LinkOption[];
   icon: React.ReactNode;
   bgColor?: string;
+  iconColor?: string;
   isAdult?: boolean;
 }
 
@@ -28,7 +29,8 @@ const defaultLinks: SocialLink[] = [
   {
     name: "OnlyFans",
     icon: <SiOnlyfans size={24} />,
-    bgColor: "bg-[#00aff0]",
+    bgColor: "bg-white",
+    iconColor: "text-[#00AFF0]",
     urls: [
       { label: "OnlyFans VIP", url: "https://onlyfans.com/paulibelen1", isAdult: true },
       { label: "OnlyFans Novia Virtual", url: "https://onlyfans.com/paulibelen.gfe", isAdult: true },
@@ -38,7 +40,8 @@ const defaultLinks: SocialLink[] = [
   {
     name: "Twitter",
     icon: <SiX size={24} />,
-    bgColor: "bg-zinc-800",
+    bgColor: "bg-white",
+    iconColor: "text-black",
     urls: [
       { label: "Twitter principal", url: "https://x.com/paulibelenof", isAdult: true },
       { label: "Twitter secundario", url: "https://x.com/xpaulibelen1x?s=21", isAdult: true },
@@ -48,29 +51,32 @@ const defaultLinks: SocialLink[] = [
     name: "TikTok",
     url: "https://www.tiktok.com/@paulibelen1_?_r=1&_t=ZS-948km0YyNd7",
     icon: <SiTiktok size={24} />,
-    bgColor: "bg-zinc-800",
+    bgColor: "bg-white",
+    iconColor: "text-black",
   },
   {
     name: "YouTube",
     url: "https://youtube.com/@paulibelen1?si=-hWmO44HFsXZ7PH6",
     icon: <SiYoutube size={24} />,
-    bgColor: "bg-red-600",
+    bgColor: "bg-white",
+    iconColor: "text-[#FF0000]",
   },
-
   {
     name: "Telegram",
     icon: <SiTelegram size={24} />,
-    bgColor: "bg-[#0088cc]",
+    bgColor: "bg-white",
+    iconColor: "text-[#0088cc]",
     urls: [
       { label: "Canal Free ", url: "https://t.me/paulibelenfree", isAdult: true },
       { label: "Catálogo", url: "https://t.me/paulibelencatalogo", isAdult: false },
       { label: "Canal secundario", url: "https://t.me/paulibelenfree2", isAdult: true },
     ],
   },
-    {
+  {
     name: "Instagram",
     icon: <SiInstagram size={24} />,
-    bgColor: "bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400",
+    bgColor: "bg-white",
+    iconColor: "text-[#E4405F]",
     urls: [
       { label: "Instagram Principal", url: "https://www.instagram.com/paulibelen1", isAdult: true },
       { label: "Instagram Secundario", url: "https://www.instagram.com/soypaulibelen", isAdult: true },
@@ -79,8 +85,9 @@ const defaultLinks: SocialLink[] = [
   {
     name: "Facebook",
     icon: <FaFacebook size={24} />,
-    bgColor: "bg-[#0088cc]",
- url: "https://www.facebook.com/share/1AxvDmRk5M/?mibextid=wwXIfr",
+    bgColor: "bg-white",
+    iconColor: "text-[#1877F2]",
+    url: "https://www.facebook.com/share/1AxvDmRk5M/?mibextid=wwXIfr",
   },
 ];
 
@@ -124,7 +131,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
   return (
     <div ref={containerRef} className="w-full">
       {/* Icons row */}
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-nowrap justify-center gap-3">
         {links.map((link) => (
           <a
             key={link.name}
@@ -132,7 +139,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
             onClick={(e) => handleClick(link, e)}
             target={hasMultipleLinks(link) ? undefined : "_blank"}
             rel="noopener noreferrer"
-            className={`relative flex h-14 w-14 items-center justify-center rounded-full text-white transition-all duration-200 hover:scale-110 hover:shadow-lg ${link.bgColor || "bg-zinc-800"} ${
+            className={`relative flex h-10 w-10 z-50 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${link.iconColor || "text-black"} ${link.bgColor || "bg-zinc-800"} ${
               openDropdown === link.name ? "scale-110 ring-2 ring-white/50" : ""
             }`}
             title={link.name}

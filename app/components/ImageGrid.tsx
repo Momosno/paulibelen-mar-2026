@@ -95,7 +95,7 @@ const defaultItems: GridItem[] = [
     imageUrl: "/ph.jpeg",
     link: "https://es.pornhub.com/model/pauli-belen",
     isAdult: true,
-    platform: "PornHub",
+    platform: "PH",
     icon: <TbRating18Plus  size={18} />,
   },
   {
