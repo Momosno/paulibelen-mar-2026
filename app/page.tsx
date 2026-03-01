@@ -59,29 +59,7 @@ export default function Home() {
             <div className="mt-6 w-full">
               <SocialLinks />
             </div>
-
-            {/* Secondary account link */}
-            <div className="mt-6 text-center">
-              <p className="text-xs text-zinc-500">
-                <span className="mr-1">📍</span>
-                <span className="text-pink-400">AR</span>
-              </p>
-              <p className="mt-1 text-sm text-zinc-400">
-                Secundaria:{" "}
-                <a
-                  href="https://link.me/soypaulibelen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cyan-400 hover:underline"
-                >
-                  @soypaulibelen
-                </a>
-              </p>
-              <p className="mt-1 text-xs text-cyan-400">
-                Si sos curioso dale click ✓
-              </p>
-            </div>
-
+    
             {/* Image Grid */}
             <div className="mt-8 w-full">
               <ImageGrid />
