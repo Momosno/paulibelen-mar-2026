@@ -2,13 +2,14 @@ import ProfileSection from "./components/ProfileSection";
 import SocialLinks from "./components/SocialLinks";
 import ImageGrid from "./components/ImageGrid";
 import Footer from "./components/Footer";
+import Portal from "./components/Portal";
 
 const PROFILE_IMAGE = "/principal.jpeg";
 const PROFILE_NAME = "Pauli Belen";
 
 export default function Home() {
   return (
-    <>
+    <Portal>
     <div className="relative min-h-screen">
         {/* Blurry background image */}
         <div
@@ -92,6 +93,6 @@ export default function Home() {
         </main>
         </div>
       </div>
-      </>
+    </Portal>
   );
 }
