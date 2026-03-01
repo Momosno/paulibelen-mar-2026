@@ -92,9 +92,9 @@ export default function Portal({ children }: PortalProps) {
           <div
             className="absolute inset-0 z-0"
             style={{
-              backgroundImage: "url('/principal.jpeg')",
+              backgroundImage: "url('/onlyfans_novia_virtual.jpeg')",
               backgroundSize: "cover",
-              backgroundPosition: "center top",
+              backgroundPosition: "center",
               filter: "brightness(0.15) saturate(0.8)",
             }}
           />
