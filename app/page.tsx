@@ -4,7 +4,7 @@ import ImageGrid from "./components/ImageGrid";
 import Footer from "./components/Footer";
 import Portal from "./components/Portal";
 
-const PROFILE_IMAGE = "/principal.jpeg";
+const PROFILE_IMAGE = "/principal.webp";
 const PROFILE_NAME = "Pauli Belen";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
         <div
           className="fixed inset-0 z-0 "
           style={{
-            backgroundImage: "url('/onlyfans_novia_virtual.jpeg')",
+            backgroundImage: "url('/onlyfans_novia_virtual.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(10px) brightness(0.5)",

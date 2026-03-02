@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Pauli Belen",
     images: [
       {
-        url: "/principal.jpeg", // Imagen limpia para la preview
+        url: "/principal.webp", // Imagen limpia para la preview
         width: 1200,
         height: 630,
         alt: "Pauli Belen",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pauli Belen",
     description: "Content Creator from Argentina",
-    images: ["/principal.jpeg"],
+    images: ["/principal.webp"],
   },
   robots: {
     index: true,
@@ -60,7 +60,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased w-full flex justify-center`}
       >
-        <StickyHeader name="Pauli Belen" profileImage="/principal.jpeg" />
+        <StickyHeader name="Pauli Belen" profileImage="/principal.webp" />
         {children}
       </body>
     </html>

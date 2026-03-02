@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { FaFacebook } from "react-icons/fa";
+import { BsSnapchat } from "react-icons/bs";
+import { FaFacebook, FaSnapchat } from "react-icons/fa";
 import { SiOnlyfans, SiX, SiTiktok, SiYoutube, SiInstagram, SiTelegram } from "react-icons/si";
 
 
@@ -87,7 +88,17 @@ const defaultLinks: SocialLink[] = [
     icon: <FaFacebook size={24} />,
     bgColor: "bg-white",
     iconColor: "text-[#1877F2]",
-    url: "https://www.facebook.com/share/1AxvDmRk5M/?mibextid=wwXIfr",
+    urls:[
+      { label: "Facebook", url: "https://www.facebook.com/Soypaulibelen1", isAdult: true },
+      { label: "Facebook secundario", url: "https://www.facebook.com/soypaulibelen", isAdult: true },
+    ] 
+  },
+    {
+    name: "Snapchat",
+    icon: <BsSnapchat   size={24} />,
+    bgColor: "bg-white",
+    iconColor: "text-yellow-500",
+    url: "https://snapchat.com/t/HWXJsHss", isAdult: true  
   },
 ];
 
@@ -139,7 +150,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
             onClick={(e) => handleClick(link, e)}
             target={hasMultipleLinks(link) ? undefined : "_blank"}
             rel="noopener noreferrer"
-            className={`relative flex h-10 w-10 z-50 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${link.iconColor || "text-black"} ${link.bgColor || "bg-zinc-800"} ${
+            className={`relative flex h-9 w-9 z-50 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${link.iconColor || "text-black"} ${link.bgColor || "bg-zinc-800"} ${
               openDropdown === link.name ? "scale-110 ring-2 ring-white/50" : ""
             }`}
             title={link.name}

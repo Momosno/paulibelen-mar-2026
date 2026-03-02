@@ -35,7 +35,7 @@ interface ImageGridProps {
 const defaultItems: GridItem[] = [
   {
     id: 1,
-    imageUrl: "/onlyfans.jpg",
+    imageUrl: "/onlyfans.webp",
     platform: "OnlyFans",
     icon: <SiOnlyfans size={18} />,
     colSpan: 2,
@@ -46,24 +46,8 @@ const defaultItems: GridItem[] = [
     ],
   },
     {
-    id: 3,
-    imageUrl: "/fansly.jpeg",
-    platform: "Fansly",
-    icon: <GiLockedHeart size={18} />,
-    link: "https://fansly.com/paulibelen1",
-    isAdult: false,
-  },
-  {
-    id: 4,
-    imageUrl: "/tecito.jpeg",
-    platform: "Tecito",
-    icon: <BsCupHot size={18} />,
-    link: "https://tecito.app/paulibelen1/post",
-    isAdult: false,
-  },
-  {
     id: 2,
-    imageUrl: "/telegram.jpeg",
+    imageUrl: "/telegram.webp",
     platform: "Telegram",
     icon: <SiTelegram size={18} />,
     colSpan: 2,
@@ -73,10 +57,27 @@ const defaultItems: GridItem[] = [
       { label: "Canal secundario", url: "https://t.me/paulibelenfree2", isAdult: true },
     ],
   },
+    {
+    id: 3,
+    imageUrl: "/fansly.webp",
+    platform: "Fansly",
+    icon: <GiLockedHeart size={18} />,
+    link: "https://fansly.com/paulibelen1",
+    isAdult: false,
+  },
+  {
+    id: 4,
+    imageUrl: "/tecito.webp",
+    platform: "Tecito",
+    icon: <BsCupHot size={18} />,
+    link: "https://tecito.app/paulibelen1/post",
+    isAdult: false,
+  },
+
 
   {
     id: 5,
-    imageUrl: "/onlyfans_novia_virtual.jpeg",
+    imageUrl: "/onlyfans_novia_virtual.webp",
     link: "https://onlyfans.com/paulibelen.gfe",
     isAdult: true,
     platform: "OnlyFans",
@@ -84,7 +85,7 @@ const defaultItems: GridItem[] = [
   },
   {
     id: 6,
-    imageUrl: "/onlyfans_free.jpeg",
+    imageUrl: "/onlyfans_free.webp",
     link: "https://onlyfans.com/paulibelenfree",
     isAdult: true,
     platform: "OnlyFans",
@@ -92,7 +93,7 @@ const defaultItems: GridItem[] = [
   },
   {
     id: 7,
-    imageUrl: "/ph.jpeg",
+    imageUrl: "/ph.webp",
     link: "https://es.pornhub.com/model/pauli-belen",
     isAdult: true,
     platform: "PH",
@@ -100,7 +101,7 @@ const defaultItems: GridItem[] = [
   },
   {
     id: 8,
-    imageUrl: "/manyvids.jpeg",
+    imageUrl: "/manyvids.webp",
     link: "https://www.manyvids.com/Activity/paulibelen1/1006233631/club",
     isAdult: true,
     platform: "ManyVids",
