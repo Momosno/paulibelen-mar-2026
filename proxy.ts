@@ -2,11 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Social media crawlers that should see the clean version
+// These match only the actual crawler/scraper bots, NOT Instagram's in-app browser.
+// Instagram's in-app browser also sends "instagram" in the UA, so we must NOT include it here.
 const BOT_SIGNATURES = [
   "facebookexternalhit",
   "facebot",
   "facebookcatalog",
-  "instagram",
   "meta-externalagent",
 ];
 
