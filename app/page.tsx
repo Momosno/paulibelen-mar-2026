@@ -2,14 +2,15 @@ import ProfileSection from "./components/ProfileSection";
 import SocialLinks from "./components/SocialLinks";
 import ImageGrid from "./components/ImageGrid";
 import Footer from "./components/Footer";
-import Portal from "./components/Portal";
+import AgeModal from "./components/AgeModal";
 
 const PROFILE_IMAGE = "/principal.webp";
 const PROFILE_NAME = "Pauli Belen";
 
 export default function Home() {
   return (
-    <Portal>
+    <>
+    <AgeModal />
     <div className="relative min-h-screen">
         {/* Blurry background image */}
         <div
@@ -71,6 +72,6 @@ export default function Home() {
         </main>
         </div>
       </div>
-    </Portal>
+    </>
   );
 }
