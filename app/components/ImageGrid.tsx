@@ -10,10 +10,14 @@ import { GiLockedHeart } from "react-icons/gi";
 import { BsCupHot } from "react-icons/bs";
 import { TbRating18Plus } from "react-icons/tb";
 import { GiCrownedHeart } from "react-icons/gi";
+import { LINKS, type LinkTarget } from "@/lib/links";
+import { track } from "@/lib/tracking/track";
 
 interface LinkOption {
   label: string;
   url: string;
+  /** Slug reported as `target` on the cta_click event. */
+  target: LinkTarget;
   isAdult?: boolean;
 }
 
@@ -21,6 +25,7 @@ interface GridItem {
   id: number;
   imageUrl: string;
   link?: string;
+  target?: LinkTarget;
   links?: LinkOption[];
   isAdult?: boolean;
   platform?: string;
@@ -40,9 +45,9 @@ const defaultItems: GridItem[] = [
     icon: <SiOnlyfans size={18} />,
     colSpan: 2,
     links: [
-      { label: "OnlyFans VIP", url: "https://onlyfans.com/paulibelen1", isAdult: true },
-      { label: "OnlyFans Novia Virtual", url: "https://onlyfans.com/paulibelen.gfe", isAdult: true },
-      { label: "OnlyFans Free", url: "https://onlyfans.com/paulibelenfree", isAdult: true },
+      { label: "OnlyFans VIP", url: LINKS.onlyfans_vip, target: "onlyfans_vip", isAdult: true },
+      { label: "OnlyFans Novia Virtual", url: LINKS.onlyfans_gfe, target: "onlyfans_gfe", isAdult: true },
+      { label: "OnlyFans Free", url: LINKS.onlyfans_free, target: "onlyfans_free", isAdult: true },
     ],
   },
     {
@@ -52,9 +57,9 @@ const defaultItems: GridItem[] = [
     icon: <SiTelegram size={18} />,
     colSpan: 2,
     links: [
-      { label: "Canal Free ", url: "https://t.me/paulibelenfree", isAdult: true },
-      { label: "Catálogo", url: "https://t.me/paulibelencatalogo", isAdult: false },
-      { label: "Canal secundario", url: "https://t.me/paulibelenfree2", isAdult: true },
+      { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
+      { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
+      { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
     ],
   },
     {
@@ -62,7 +67,8 @@ const defaultItems: GridItem[] = [
     imageUrl: "/fansly.webp",
     platform: "Fansly",
     icon: <GiLockedHeart size={18} />,
-    link: "https://fansly.com/paulibelen1",
+    link: LINKS.fansly,
+    target: "fansly",
     isAdult: false,
   },
   {
@@ -70,7 +76,8 @@ const defaultItems: GridItem[] = [
     imageUrl: "/tecito.webp",
     platform: "Tecito",
     icon: <BsCupHot size={18} />,
-    link: "https://tecito.app/paulibelen1/post",
+    link: LINKS.tecito,
+    target: "tecito",
     isAdult: false,
   },
 
@@ -78,7 +85,8 @@ const defaultItems: GridItem[] = [
   {
     id: 5,
     imageUrl: "/onlyfans_novia_virtual.webp",
-    link: "https://onlyfans.com/paulibelen.gfe",
+    link: LINKS.onlyfans_gfe,
+    target: "onlyfans_gfe",
     isAdult: true,
     platform: "OnlyFans",
     icon: <SiOnlyfans size={18} />,
@@ -86,7 +94,8 @@ const defaultItems: GridItem[] = [
   {
     id: 6,
     imageUrl: "/onlyfans_free.webp",
-    link: "https://onlyfans.com/paulibelenfree",
+    link: LINKS.onlyfans_free,
+    target: "onlyfans_free",
     isAdult: true,
     platform: "OnlyFans",
     icon: <SiOnlyfans size={18} />,
@@ -94,7 +103,8 @@ const defaultItems: GridItem[] = [
   {
     id: 7,
     imageUrl: "/ph.webp",
-    link: "https://es.pornhub.com/model/pauli-belen",
+    link: LINKS.pornhub,
+    target: "pornhub",
     isAdult: true,
     platform: "PH",
     icon: <TbRating18Plus  size={18} />,
@@ -102,7 +112,8 @@ const defaultItems: GridItem[] = [
   {
     id: 8,
     imageUrl: "/manyvids.webp",
-    link: "https://www.manyvids.com/Activity/paulibelen1/1006233631/club",
+    link: LINKS.manyvids,
+    target: "manyvids",
     isAdult: true,
     platform: "ManyVids",
     icon: <GiCrownedHeart  size={18} />,
@@ -113,6 +124,7 @@ export default function ImageGrid({ items = defaultItems }: ImageGridProps) {
   const [adultWarning, setAdultWarning] = useState<{
     show: boolean;
     link: string;
+    target?: LinkTarget;
   }>({ show: false, link: "" });
   const [mounted, setMounted] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
@@ -144,24 +156,30 @@ export default function ImageGrid({ items = defaultItems }: ImageGridProps) {
       return;
     }
 
-    // Single link with adult warning
+    // Single link with adult warning: the outbound click only really happens
+    // once the disclaimer is confirmed, so it is tracked there instead.
     if (item.isAdult && item.link) {
       e.preventDefault();
-      setAdultWarning({ show: true, link: item.link });
+      setAdultWarning({ show: true, link: item.link, target: item.target });
+      return;
     }
+
+    if (item.target) track("cta_click", item.target);
   };
 
   const handleLinkClick = (linkOption: LinkOption, e: React.MouseEvent) => {
     if (linkOption.isAdult) {
       e.preventDefault();
-      setAdultWarning({ show: true, link: linkOption.url });
+      setAdultWarning({ show: true, link: linkOption.url, target: linkOption.target });
       setOpenDropdown(null);
     } else {
+      track("cta_click", linkOption.target);
       setOpenDropdown(null);
     }
   };
 
   const handleConfirmAdult = () => {
+    if (adultWarning.target) track("cta_click", adultWarning.target);
     window.open(adultWarning.link, "_blank");
     setAdultWarning({ show: false, link: "" });
   };

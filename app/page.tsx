@@ -1,77 +1,9 @@
-import ProfileSection from "./components/ProfileSection";
-import SocialLinks from "./components/SocialLinks";
-import ImageGrid from "./components/ImageGrid";
-import Footer from "./components/Footer";
-import AgeModal from "./components/AgeModal";
+import AgeGate from "./components/AgeGate";
 
-const PROFILE_IMAGE = "/principal.webp";
-const PROFILE_NAME = "Pauli Belen";
-
+/**
+ * One document for everybody. <AgeGate /> serves the SFW cover in the initial
+ * HTML and mounts the explicit content only after the +18 confirmation.
+ */
 export default function Home() {
-  return (
-    <>
-    <AgeModal />
-    <div className="relative min-h-screen">
-        {/* Blurry background image */}
-        <div
-          className="fixed inset-0 z-0 "
-          style={{
-            backgroundImage: "url('/onlyfans_novia_virtual.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(10px) brightness(0.5)",
-            transform: "scale(1.1)",
-          }}
-        />
-
-        {/* Dark overlay */}
-        <div className="fixed inset-0 z-0 bg-black/30" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* Main content */}
-        <div className="relative w-full  z-10 flex min-h-screen flex-col items-center  md:px-4 md:py-6">
-
-
-        {/* Modal/Card container */}
-        <main className="w-full md:w-1/2 lg:w-1/3 overflow-hidden md:rounded-3xl self-center bg-zinc-950/90 shadow-2xl backdrop-blur-xl">
-          {/* Hero profile section - full width, no padding */}
-          <ProfileSection
-            name={PROFILE_NAME}
-            username="@paulibelen1"
-            profileImage={PROFILE_IMAGE}
-          />
-
-          {/* Content area with padding */}
-          <div className="flex flex-col items-center px-6 pb-8 bg-black -mt-2">
-            {/* Social links */}
-            <div className="mt-6 w-full">
-              <SocialLinks />
-            </div>
-    
-            {/* Image Grid */}
-            <div className="mt-8 w-full">
-              <ImageGrid />
-            </div>
-
-            {/* Footer */}
-            <Footer />
-          </div>
-        </main>
-        </div>
-      </div>
-    </>
-  );
+  return <AgeGate />;
 }

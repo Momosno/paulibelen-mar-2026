@@ -1,30 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+interface AgeModalProps {
+  onConfirm: () => void;
+  onExit: () => void;
+}
 
-const STORAGE_KEY = "age-verified";
-
-export default function AgeModal() {
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const isVerified = localStorage.getItem(STORAGE_KEY);
-    if (!isVerified) {
-      setShowModal(true);
-    }
-  }, []);
-
-  const handleConfirm = () => {
-    localStorage.setItem(STORAGE_KEY, "true");
-    setShowModal(false);
-  };
-
-  const handleExit = () => {
-    window.location.href = "https://google.com";
-  };
-
-  if (!showModal) return null;
-
+/**
+ * Presentational only — <AgeGate /> owns the verified state, because whether
+ * the explicit content mounts at all depends on it.
+ */
+export default function AgeModal({ onConfirm, onExit }: AgeModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="mx-4 w-full max-w-sm rounded-2xl bg-zinc-900 p-6 text-center">
@@ -38,13 +23,13 @@ export default function AgeModal() {
         </p>
         <div className="flex flex-col gap-3">
           <button
-            onClick={handleConfirm}
+            onClick={onConfirm}
             className="w-full rounded-full bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-700"
           >
             I am 18+
           </button>
           <button
-            onClick={handleExit}
+            onClick={onExit}
             className="w-full rounded-full border border-zinc-700 px-6 py-3 font-medium text-zinc-400 transition-colors hover:bg-zinc-800"
           >
             Exit

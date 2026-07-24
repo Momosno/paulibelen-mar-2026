@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import StickyHeader from "./components/StickyHeader";
+import Analytics from "./components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,17 +20,22 @@ const playfair = Playfair_Display({
   weight: ["400", "500"],
 });
 
+// Title, description and image all describe the SFW cover in <Cover />, which
+// is now what every visitor and crawler actually receives at "/".
+// metadataBase makes the relative og:image resolve to an absolute URL, which
+// Facebook and Twitter require.
 export const metadata: Metadata = {
-  title: "Pauli Belen",
-  description: "Content Creator from Argentina",
+  metadataBase: new URL("https://paulibelen.com"),
+  title: "Pauli Belen - Content Creator",
+  description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
   openGraph: {
-    title: "Pauli Belen",
-    description: "Content Creator from Argentina",
+    title: "Pauli Belen - Content Creator",
+    description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
     url: "https://paulibelen.com",
     siteName: "Pauli Belen",
     images: [
       {
-        url: "/principal.webp", // Imagen limpia para la preview
+        url: "/principal.webp",
         width: 1200,
         height: 630,
         alt: "Pauli Belen",
@@ -40,8 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pauli Belen",
-    description: "Content Creator from Argentina",
+    title: "Pauli Belen - Content Creator",
+    description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
     images: ["/principal.webp"],
   },
   robots: {
@@ -60,6 +66,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased w-full flex justify-center`}
       >
+        <Analytics />
         <StickyHeader name="Pauli Belen" profileImage="/principal.webp" />
         {children}
       </body>

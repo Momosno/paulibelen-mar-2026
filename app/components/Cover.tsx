@@ -1,44 +1,49 @@
+"use client";
+
 import Image from "next/image";
-import { Metadata } from "next";
+import { LINKS, type LinkTarget } from "@/lib/links";
+import { track } from "@/lib/tracking/track";
 
-export const metadata: Metadata = {
-  title: "Pauli Belen - Content Creator",
-  description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
-  openGraph: {
-    title: "Pauli Belen - Content Creator",
-    description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
-    images: ["/principal.webp"],
-  },
-};
+/**
+ * The public cover. This is what every visitor and every crawler gets in the
+ * initial HTML — there is no user-agent branching, the explicit content simply
+ * is not rendered until the +18 gate is confirmed.
+ *
+ * Keep this SFW: og:image / og:title are derived from it.
+ */
 
-const safeLinks = [
+const safeLinks: { name: string; url: string; target: LinkTarget; color: string; label: string }[] = [
   {
     name: "TikTok",
-    url: "https://www.tiktok.com/@paulibelen1_?_r=1&_t=ZS-948km0YyNd7",
+    url: LINKS.tiktok,
+    target: "tiktok",
     color: "#000000",
     label: "TikTok",
   },
   {
     name: "YouTube",
-    url: "https://youtube.com/@paulibelen1?si=-hWmO44HFsXZ7PH6",
+    url: LINKS.youtube,
+    target: "youtube",
     color: "#FF0000",
     label: "YouTube",
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com/share/1AxvDmRk5M/?mibextid=wwXIfr",
+    url: LINKS.facebook_share,
+    target: "facebook_share",
     color: "#1877F2",
     label: "Facebook",
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/paulibelen1",
+    url: LINKS.instagram_main,
+    target: "instagram_main",
     color: "#E4405F",
     label: "Instagram",
   },
 ];
 
-export default function PreviewPage() {
+export default function Cover() {
   return (
     <div
       style={{
@@ -78,6 +83,7 @@ export default function PreviewPage() {
             width={96}
             height={96}
             style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            priority
           />
         </div>
 
@@ -97,6 +103,7 @@ export default function PreviewPage() {
             <a
               key={link.name}
               href={link.url}
+              onClick={() => track("cta_click", link.target)}
               target="_blank"
               rel="noopener noreferrer"
               style={{

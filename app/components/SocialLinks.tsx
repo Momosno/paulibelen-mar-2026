@@ -4,17 +4,22 @@ import { useState, useRef, useEffect } from "react";
 import { BsSnapchat } from "react-icons/bs";
 import { FaFacebook, FaSnapchat } from "react-icons/fa";
 import { SiOnlyfans, SiX, SiTiktok, SiYoutube, SiInstagram, SiTelegram } from "react-icons/si";
+import { LINKS, type LinkTarget } from "@/lib/links";
+import { track } from "@/lib/tracking/track";
 
 
 interface LinkOption {
   label: string;
   url: string;
+  /** Slug reported as `target` on the cta_click event. */
+  target: LinkTarget;
   isAdult?: boolean;
 }
 
 interface SocialLink {
   name: string;
   url?: string;
+  target?: LinkTarget;
   urls?: LinkOption[];
   icon: React.ReactNode;
   bgColor?: string;
@@ -33,9 +38,9 @@ const defaultLinks: SocialLink[] = [
     bgColor: "bg-white",
     iconColor: "text-[#00AFF0]",
     urls: [
-      { label: "OnlyFans VIP", url: "https://onlyfans.com/paulibelen1", isAdult: true },
-      { label: "OnlyFans Novia Virtual", url: "https://onlyfans.com/paulibelen.gfe", isAdult: true },
-      { label: "OnlyFans Free", url: "https://onlyfans.com/paulibelenfree", isAdult: true },
+      { label: "OnlyFans VIP", url: LINKS.onlyfans_vip, target: "onlyfans_vip", isAdult: true },
+      { label: "OnlyFans Novia Virtual", url: LINKS.onlyfans_gfe, target: "onlyfans_gfe", isAdult: true },
+      { label: "OnlyFans Free", url: LINKS.onlyfans_free, target: "onlyfans_free", isAdult: true },
     ],
   },
   {
@@ -44,20 +49,22 @@ const defaultLinks: SocialLink[] = [
     bgColor: "bg-white",
     iconColor: "text-black",
     urls: [
-      { label: "Twitter principal", url: "https://x.com/paulibelenof", isAdult: true },
-      { label: "Twitter secundario", url: "https://x.com/xpaulibelen1x?s=21", isAdult: true },
+      { label: "Twitter principal", url: LINKS.twitter_main, target: "twitter_main", isAdult: true },
+      { label: "Twitter secundario", url: LINKS.twitter_alt, target: "twitter_alt", isAdult: true },
     ],
   },
   {
     name: "TikTok",
-    url: "https://www.tiktok.com/@paulibelen1_?_r=1&_t=ZS-948km0YyNd7",
+    url: LINKS.tiktok,
+    target: "tiktok",
     icon: <SiTiktok size={24} />,
     bgColor: "bg-white",
     iconColor: "text-black",
   },
   {
     name: "YouTube",
-    url: "https://youtube.com/@paulibelen1?si=-hWmO44HFsXZ7PH6",
+    url: LINKS.youtube,
+    target: "youtube",
     icon: <SiYoutube size={24} />,
     bgColor: "bg-white",
     iconColor: "text-[#FF0000]",
@@ -68,9 +75,9 @@ const defaultLinks: SocialLink[] = [
     bgColor: "bg-white",
     iconColor: "text-[#0088cc]",
     urls: [
-      { label: "Canal Free ", url: "https://t.me/paulibelenfree", isAdult: true },
-      { label: "Catálogo", url: "https://t.me/paulibelencatalogo", isAdult: false },
-      { label: "Canal secundario", url: "https://t.me/paulibelenfree2", isAdult: true },
+      { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
+      { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
+      { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
     ],
   },
   {
@@ -79,8 +86,8 @@ const defaultLinks: SocialLink[] = [
     bgColor: "bg-white",
     iconColor: "text-[#E4405F]",
     urls: [
-      { label: "Instagram Principal", url: "https://www.instagram.com/paulibelen1", isAdult: true },
-      { label: "Instagram Secundario", url: "https://www.instagram.com/soypaulibelen", isAdult: true },
+      { label: "Instagram Principal", url: LINKS.instagram_main, target: "instagram_main", isAdult: true },
+      { label: "Instagram Secundario", url: LINKS.instagram_alt, target: "instagram_alt", isAdult: true },
     ],
   },
   {
@@ -89,16 +96,16 @@ const defaultLinks: SocialLink[] = [
     bgColor: "bg-white",
     iconColor: "text-[#1877F2]",
     urls:[
-      { label: "Facebook", url: "https://www.facebook.com/Soypaulibelen1", isAdult: true },
-      { label: "Facebook secundario", url: "https://www.facebook.com/soypaulibelen", isAdult: true },
-    ] 
+      { label: "Facebook", url: LINKS.facebook_main, target: "facebook_main", isAdult: true },
+      { label: "Facebook secundario", url: LINKS.facebook_alt, target: "facebook_alt", isAdult: true },
+    ]
   },
     {
     name: "Snapchat",
     icon: <BsSnapchat   size={24} />,
     bgColor: "bg-white",
     iconColor: "text-yellow-500",
-    url: "https://snapchat.com/t/HWXJsHss", isAdult: true  
+    url: LINKS.snapchat, target: "snapchat", isAdult: true
   },
 ];
 
@@ -114,7 +121,10 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
     if (hasMultipleLinks(link)) {
       e.preventDefault();
       setOpenDropdown(openDropdown === link.name ? null : link.name);
+      return;
     }
+    // Direct outbound link: record it and let the browser navigate normally.
+    if (link.target) track("cta_click", link.target);
   };
 
   // Calculate dropdown height for animation
@@ -176,6 +186,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
                 <a
                   key={index}
                   href={option.url}
+                  onClick={() => track("cta_click", option.target)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white backdrop-blur-md transition-all duration-200 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
