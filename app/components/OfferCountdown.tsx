@@ -39,7 +39,7 @@ export default function OfferCountdown() {
   const { hours, minutes, seconds } = getTimeParts(remaining);
 
   return (
-    <section className="mt-11 flex flex-col items-center" aria-label="Oferta por tiempo limitado">
+    <section className="flex flex-col items-center" aria-label="Oferta por tiempo limitado">
       <div className="rounded-md bg-zinc-700 px-4 py-1.5 text-lg font-extrabold text-white shadow-lg">
         50% OFF
       </div>
