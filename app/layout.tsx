@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import StickyHeader from "./components/StickyHeader";
 import Analytics from "./components/Analytics";
 
 const geistSans = Geist({
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Pauli Belen",
     images: [
       {
-        url: "/principal.webp",
+        url: "/manyvids.webp",
         width: 1200,
         height: 630,
         alt: "Pauli Belen",
@@ -62,12 +61,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth bg-[#09090b]">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased w-full flex justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} m-0 flex w-full justify-center overflow-x-hidden bg-[#09090b] p-0 font-sans text-[#fafafa] antialiased`}
       >
         <Analytics />
-        <StickyHeader name="Pauli Belen" profileImage="/principal.webp" />
         {children}
       </body>
     </html>

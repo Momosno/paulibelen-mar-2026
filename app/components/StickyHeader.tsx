@@ -9,21 +9,13 @@ interface StickyHeaderProps {
 }
 
 export default function StickyHeader({ name, profileImage }: StickyHeaderProps) {
-  const [opacity, setOpacity] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const startFade = 50;
-      const endFade = 200;
-
-      if (scrollY <= startFade) {
-        setOpacity(0);
-      } else if (scrollY >= endFade) {
-        setOpacity(1);
-      } else {
-        setOpacity((scrollY - startFade) / (endFade - startFade));
-      }
+      setVisible(scrollY > startFade);
     };
 
     handleScroll();
@@ -33,8 +25,7 @@ export default function StickyHeader({ name, profileImage }: StickyHeaderProps) 
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-[9999] bg-zinc-900/95 backdrop-blur-xl transition-opacity duration-200 self-center"
-      style={{ opacity }}
+      className={`fixed inset-x-0 top-0 z-[9999] self-center bg-zinc-900/95 backdrop-blur-xl transition-opacity duration-200 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`}
     >
       <div className="flex items-center justify-center gap-3 px-4 py-3">
         <div className="size-10 shrink-0 overflow-hidden rounded-full border-2 border-pink-500/30">

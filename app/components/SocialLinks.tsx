@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { BsSnapchat } from "react-icons/bs";
-import { FaFacebook, FaSnapchat } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { SiOnlyfans, SiX, SiTiktok, SiYoutube, SiInstagram, SiTelegram } from "react-icons/si";
 import { LINKS, type LinkTarget } from "@/lib/links";
 import { track } from "@/lib/tracking/track";
@@ -47,7 +47,7 @@ const defaultLinks: SocialLink[] = [
     name: "Twitter",
     icon: <SiX size={24} />,
     bgColor: "bg-white",
-    iconColor: "text-black",
+    iconColor: "text-white",
     urls: [
       { label: "Twitter principal", url: LINKS.twitter_main, target: "twitter_main", isAdult: true },
       { label: "Twitter secundario", url: LINKS.twitter_alt, target: "twitter_alt", isAdult: true },
@@ -59,7 +59,7 @@ const defaultLinks: SocialLink[] = [
     target: "tiktok",
     icon: <SiTiktok size={24} />,
     bgColor: "bg-white",
-    iconColor: "text-black",
+    iconColor: "text-white",
   },
   {
     name: "YouTube",
@@ -111,8 +111,6 @@ const defaultLinks: SocialLink[] = [
 
 export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [dropdownHeight, setDropdownHeight] = useState(0);
-  const dropdownContentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const hasMultipleLinks = (link: SocialLink) => link.urls && link.urls.length > 0;
@@ -126,15 +124,6 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
     // Direct outbound link: record it and let the browser navigate normally.
     if (link.target) track("cta_click", link.target);
   };
-
-  // Calculate dropdown height for animation
-  useEffect(() => {
-    if (openDropdown && dropdownContentRef.current) {
-      setDropdownHeight(dropdownContentRef.current.scrollHeight);
-    } else {
-      setDropdownHeight(0);
-    }
-  }, [openDropdown]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -152,7 +141,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
   return (
     <div ref={containerRef} className="w-full">
       {/* Icons row */}
-      <div className="flex flex-nowrap justify-center gap-3">
+      <div className="flex flex-wrap justify-center gap-3">
         {links.map((link) => (
           <a
             key={link.name}
@@ -160,7 +149,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
             onClick={(e) => handleClick(link, e)}
             target={hasMultipleLinks(link) ? undefined : "_blank"}
             rel="noopener noreferrer"
-            className={`relative flex h-9 w-9 z-50 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${link.iconColor || "text-black"} ${link.bgColor || "bg-zinc-800"} ${
+            className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[#171719] shadow-[0_5px_18px_rgba(0,0,0,.35)] transition-all duration-200 hover:-translate-y-1 hover:bg-[#242428] ${link.iconColor || "text-white"} ${
               openDropdown === link.name ? "scale-110 ring-2 ring-white/50" : ""
             }`}
             title={link.name}
@@ -168,20 +157,18 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
             {link.icon}
             {/* Indicator dot for items with multiple links */}
             {hasMultipleLinks(link) && (
-              <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-black bg-pink-500" />
+              <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#0d0d0f] bg-pink-500" />
             )}
           </a>
         ))}
       </div>
 
       {/* Dropdown section with animated height */}
-      <div
-        className="w-full overflow-hidden transition-all duration-300 ease-out"
-        style={{ height: dropdownHeight }}
-      >
-        <div ref={dropdownContentRef} className="pt-4">
+      <div className={`grid w-full transition-[grid-template-rows] duration-300 ease-out ${openDropdown ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="min-h-0 overflow-hidden">
+          <div className="pt-4">
           {activeLink && activeLink.urls && (
-            <div className="flex flex-col gap-2 p-4">
+            <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-black/55 p-3 shadow-xl backdrop-blur-xl">
               {activeLink.urls.map((option, index) => (
                 <a
                   key={index}
@@ -189,7 +176,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
                   onClick={() => track("cta_click", option.target)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white backdrop-blur-md transition-all duration-200 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                  className="group flex items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-white/20"
                 >
                   <span className="drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">{option.label}</span>
                   {option.isAdult && (
@@ -201,6 +188,7 @@ export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) 
               ))}
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>

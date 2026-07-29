@@ -14,7 +14,6 @@ interface ProfileSectionProps {
 
 export default function ProfileSection({
   name = "Pauli Belen",
-  username = "@paulibelen1",
   bio,
   profileImage = "/principal.webp",
   visitCount,
@@ -29,9 +28,8 @@ export default function ProfileSection({
     .slice(0, 2);
 
   return (
-    <div className="relative w-full">
-      {/* Hero Image - full width with gradient overlay */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden">
+    <section className="relative flex w-full flex-col items-center overflow-hidden pb-2 text-center">
+      <div className="relative h-[320px] w-full sm:h-[360px]">
         {!imageError ? (
           <Image
             src={profileImage}
@@ -46,23 +44,15 @@ export default function ProfileSection({
             <span className="text-6xl font-bold text-white">{initials}</span>
           </div>
         )}
-
-        {/* Gradient overlay at bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent" />
-
-        {/* Name and username positioned over the gradient */}
-        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center pb-6 text-center">
-          <h1 className="mb-1 text-3xl font-bold text-white drop-shadow-lg">{name}</h1>
-          <span className="text-sm text-zinc-400">{username}</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0f] via-black/10 to-black/10" />
+        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-4 pb-2">
+          <h1 className="text-[32px] font-extrabold tracking-tight text-white drop-shadow-lg sm:text-[38px]">{name}</h1>
+          <p className="mt-2 flex items-center gap-2 text-base font-semibold text-white/65">
+            <span className="size-2.5 rounded-full bg-emerald-500" /> Activa ahora
+          </p>
         </div>
       </div>
-
-      {/* Bio - if provided */}
-      {bio && (
-        <p className="mt-4 text-center text-sm leading-relaxed text-zinc-300">
-          {bio}
-        </p>
-      )}
+      <p className="mt-3 text-lg font-medium text-white">{bio || "Content Creator 🇦🇷"}</p>
 
       {/* Visit counter badge */}
       {visitCount !== undefined && (
@@ -73,6 +63,6 @@ export default function ProfileSection({
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
