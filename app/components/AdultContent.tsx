@@ -4,7 +4,7 @@ import ImageGrid from "./ImageGrid";
 import OfferCountdown from "./OfferCountdown";
 import Footer from "./Footer";
 
-const PROFILE_IMAGE = "/fansly.webp";
+const PROFILE_IMAGE = "/2.jpg";
 const PROFILE_NAME = "Pauli Belen";
 
 /**
@@ -13,7 +13,7 @@ const PROFILE_NAME = "Pauli Belen";
  */
 export default function AdultContent() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[#101010]">
+    <div className="relative min-h-screen w-full overflow-hidden b1g-[#101010]">
       <div className="fixed inset-0 z-0 scale-110 bg-[url('/onlyfans_novia_virtual.webp')] bg-cover bg-center bg-fixed blur-sm brightness-[.62] saturate-[.9]" />
       <div className="fixed inset-0 z-0 bg-black/10" />
 

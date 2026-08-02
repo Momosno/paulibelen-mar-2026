@@ -100,13 +100,13 @@ const defaultLinks: SocialLink[] = [
       { label: "Facebook secundario", url: LINKS.facebook_alt, target: "facebook_alt", isAdult: true },
     ]
   },
-  {
-    name: "Snapchat",
-    icon: <BsSnapchat size={24} />,
-    bgColor: "bg-white",
-    iconColor: "text-yellow-500",
-    url: LINKS.snapchat, target: "snapchat", isAdult: true
-  },
+  // {
+  //   name: "Snapchat",
+  //   icon: <BsSnapchat size={24} />,
+  //   bgColor: "bg-white",
+  //   iconColor: "text-yellow-500",
+  //   url: LINKS.snapchat, target: "snapchat", isAdult: true
+  // },
 ];
 
 export default function SocialLinks({ links = defaultLinks }: SocialLinksProps) {

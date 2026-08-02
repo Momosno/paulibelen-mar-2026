@@ -10,9 +10,9 @@
  * reports for that destination.
  */
 export const LINKS = {
-  onlyfans_vip: "https://onlyfans.com/paulibelen1",
-  onlyfans_gfe: "https://onlyfans.com/paulibelen.gfe",
-  onlyfans_free: "https://onlyfans.com/paulibelenfree",
+  onlyfans_vip: "https://onlyfans.com/paulibelen1/c23",
+  onlyfans_gfe: "https://onlyfans.com/paulibelen.gfe/c30",
+  onlyfans_free: "https://onlyfans.com/paulibelenfree/c23",
 
   telegram_free: "https://t.me/paulibelenfree",
   telegram_catalogo: "https://t.me/paulibelencatalogo",
