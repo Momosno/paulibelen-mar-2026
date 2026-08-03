@@ -159,21 +159,21 @@ export default function ImageGrid({ items = defaultItems }: ImageGridProps) {
   const hasMultipleLinks = (item: GridItem) => item.links && item.links.length > 0;
 
   return (
-    <div className="grid w-full grid-cols-2 gap-5">
+    <div className="grid w-full grid-cols-2 gap-5 ">
       {items.map((item) => (
         <div
           key={item.id}
           ref={(el) => {
             if (el) dropdownRefs.current.set(item.id, el);
           }}
-          className={`relative ${item.colSpan === 2 ? "col-span-2" : ""}`}
+          className={`relative  ${item.colSpan === 2 ? "col-span-2" : ""}`}
         >
           <a
             href={hasMultipleLinks(item) ? "#" : item.link}
             onClick={(e) => handleClick(item, e)}
             target={hasMultipleLinks(item) ? undefined : "_blank"}
             rel="noopener noreferrer"
-            className={`group relative block overflow-hidden rounded-lg border border-white/10 bg-zinc-800 shadow-[0_10px_32px_rgba(0,0,0,.35)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.45)] ${item.colSpan === 2 ? "aspect-[16/10]" : "aspect-[4/5]"}`}
+            className={`group relative block overflow-hidden rounded-lg border border-white/10 bg-zinc-800 shadow-[0_10px_32px_rgba(0,0,0,.35)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.45)] ${item.colSpan === 2 ? "aspect-[4/4]" : "aspect-[4/5]"}`}
           >
             {/* Image shown clearly */}
             <Image
