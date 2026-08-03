@@ -38,7 +38,7 @@ interface ImageGridProps {
 const allItems: GridItem[] = [
   {
     id: 1,
-    imageUrl: "/onlyfans_novia_virtual.jpg",
+    imageUrl: "/onlyfans_novia_virtual.webp",
     platform: "OnlyFans",
     icon: <SiOnlyfans size={18} />,
     colSpan: 2,

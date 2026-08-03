@@ -50,7 +50,7 @@ export default function Cover() {
         {/* Profile image */}
         <div className="size-24 overflow-hidden rounded-full border-2 border-pink-500/50">
           <Image
-            src="/safe.jpg"
+            src="/safe.webp"
             alt="Pauli Belen"
             width={96}
             height={96}
