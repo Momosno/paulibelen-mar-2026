@@ -45,60 +45,32 @@ const safeLinks: { name: string; url: string; target: LinkTarget; color: string;
 
 export default function Cover() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#0a0a0a",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "2rem",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "400px",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "1.5rem",
-        }}
-      >
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#0a0a0a] p-8 font-sans">
+      <div className="flex w-full max-w-[400px] flex-col items-center gap-6">
         {/* Profile image */}
-        <div
-          style={{
-            width: "96px",
-            height: "96px",
-            borderRadius: "50%",
-            overflow: "hidden",
-            border: "2px solid rgba(236, 72, 153, 0.5)",
-          }}
-        >
+        <div className="size-24 overflow-hidden rounded-full border-2 border-pink-500/50">
           <Image
-            src="/principal.webp"
+            src="/principal-new.webp"
             alt="Pauli Belen"
             width={96}
             height={96}
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            className="size-full object-cover"
             priority
           />
         </div>
 
         {/* Name */}
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ color: "#ffffff", fontSize: "1.5rem", fontWeight: 600, margin: 0 }}>
+        <div className="text-center">
+          <h1 className="m-0 text-2xl font-semibold text-white">
             Pauli Belen
           </h1>
-          <p style={{ color: "#71717a", fontSize: "0.875rem", margin: "0.25rem 0 0" }}>
+          <p className="mb-0 mt-1 text-sm text-zinc-500">
             @paulibelen1 · Content Creator 🇦🇷
           </p>
         </div>
 
         {/* Safe links */}
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div className="flex w-full flex-col gap-3">
           {safeLinks.map((link) => (
             <a
               key={link.name}
@@ -106,18 +78,7 @@ export default function Cover() {
               onClick={() => track("cta_click", link.target)}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "block",
-                padding: "0.875rem 1.25rem",
-                backgroundColor: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: "0.75rem",
-                color: "#ffffff",
-                textDecoration: "none",
-                textAlign: "center",
-                fontWeight: 500,
-                fontSize: "0.9rem",
-              }}
+              className="block rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-center text-[.9rem] font-medium text-white no-underline transition-colors hover:bg-white/10"
             >
               {link.label}
             </a>
