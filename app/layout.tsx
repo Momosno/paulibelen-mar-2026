@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Pauli Belen",
     images: [
       {
-        url: "/safe.webp",
+        url: "/sfw.webp",
         width: 1200,
         height: 630,
         alt: "Pauli Belen",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pauli Belen - Content Creator",
     description: "Creadora de contenido argentina. Sígueme en mis redes sociales.",
-    images: ["/safe.webp"],
+    images: ["/sfw.webp"],
   },
   robots: {
     index: true,
