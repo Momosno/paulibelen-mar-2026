@@ -43,24 +43,21 @@ export default function Portal({ children }: PortalProps) {
     <>
       {/* Main content (hidden behind portal) */}
       <div
-        className={`transition-opacity duration-700 ${
-          isAnimating ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`transition-opacity duration-700 ${isAnimating ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
       >
         {children}
       </div>
 
       {/* Portal overlay - split curtain effect */}
       <div
-        className={`fixed inset-0 z-[100] ${
-          isAnimating ? "pointer-events-none" : ""
-        }`}
+        className={`fixed inset-0 z-[100] ${isAnimating ? "pointer-events-none" : ""
+          }`}
       >
         {/* Left curtain */}
         <div
-          className={`absolute inset-y-0 left-0 w-1/2 bg-[#030303] transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-            isAnimating ? "-translate-x-full shadow-none" : "translate-x-0 shadow-[20px_0_60px_rgba(0,0,0,0.8)]"
-          }`}
+          className={`absolute inset-y-0 left-0 w-1/2 bg-[#030303] transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${isAnimating ? "-translate-x-full shadow-none" : "translate-x-0 shadow-[20px_0_60px_rgba(0,0,0,0.8)]"
+            }`}
         >
           {/* Decorative edge */}
           <div className="absolute right-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-pink-500/30 to-transparent" />
@@ -68,9 +65,8 @@ export default function Portal({ children }: PortalProps) {
 
         {/* Right curtain */}
         <div
-          className={`absolute inset-y-0 right-0 w-1/2 bg-[#030303] transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-            isAnimating ? "translate-x-full shadow-none" : "translate-x-0 shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
-          }`}
+          className={`absolute inset-y-0 right-0 w-1/2 bg-[#030303] transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${isAnimating ? "translate-x-full shadow-none" : "translate-x-0 shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
+            }`}
         >
           {/* Decorative edge */}
           <div className="absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-pink-500/30 to-transparent" />
@@ -78,12 +74,11 @@ export default function Portal({ children }: PortalProps) {
 
         {/* Portal content - centered, fades out */}
         <div
-          className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${
-            isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-          }`}
+          className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
         >
           {/* Background image layer */}
-          <div className="absolute inset-0 z-0 bg-[url('/onlyfans_novia_virtual.webp')] bg-cover bg-center brightness-[.15] saturate-[.8]" />
+          <div className="absolute inset-0 z-0 bg-[url('/nueva-portada.jpeg')] bg-cover bg-center brightness-[.15] saturate-[.8]" />
 
           {/* Gradient overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-[1]" />

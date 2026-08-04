@@ -4,7 +4,7 @@ import ImageGrid from "./ImageGrid";
 import OfferCountdown from "./OfferCountdown";
 import Footer from "./Footer";
 
-const PROFILE_IMAGE = "/header.jpeg";
+const PROFILE_IMAGE = "/header.webp";
 const PROFILE_NAME = "Pauli Belen";
 
 /**
@@ -14,7 +14,7 @@ const PROFILE_NAME = "Pauli Belen";
 export default function AdultContent() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden b1g-[#101010]">
-      <div className="fixed inset-0 z-0 scale-110 bg-[url('/onlyfans_novia_virtual.webp')] bg-cover bg-center bg-fixed blur-sm brightness-[.62] saturate-[.9]" />
+      <div className="fixed inset-0 z-0 scale-110 bg-[url('/nueva-portada.jpeg')] bg-cover bg-center bg-fixed blur-sm brightness-[.62] saturate-[.9]" />
       <div className="fixed inset-0 z-0 bg-black/10" />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[600px] flex-col overflow-hidden bg-[#0d0d0f] shadow-[0_0_65px_rgba(0,0,0,.5)] transition-all duration-700 ease-out sm:my-5 sm:min-h-[calc(100vh-2.5rem)] sm:w-[calc(100%-2.5rem)] sm:rounded-md">
@@ -32,7 +32,7 @@ export default function AdultContent() {
             <div className="mt-3 w-full">
               <ImageGrid />
             </div>
-            <div className="mt-4 w-full">
+            <div className="mt-8 w-full">
               <OfferCountdown />
             </div>
             <Footer />
