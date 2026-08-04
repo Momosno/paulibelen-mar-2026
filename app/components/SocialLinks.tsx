@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { BsSnapchat } from "react-icons/bs";
+import { BsCupHot, BsSnapchat } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { SiOnlyfans, SiX, SiTiktok, SiYoutube, SiInstagram, SiTelegram } from "react-icons/si";
 import { LINKS, type LinkTarget } from "@/lib/links";
 import { track } from "@/lib/tracking/track";
+import { GiLockedHeart } from "react-icons/gi";
 
 
 interface LinkOption {
@@ -43,63 +44,77 @@ const defaultLinks: SocialLink[] = [
   //     { label: "OnlyFans Free", url: LINKS.onlyfans_free, target: "onlyfans_free", isAdult: true },
   //   ],
   // },
-  {
-    name: "Twitter",
-    icon: <SiX size={24} />,
-    bgColor: "bg-white",
-    iconColor: "text-white",
-    urls: [
-      { label: "Twitter principal", url: LINKS.twitter_main, target: "twitter_main", isAdult: true },
-      { label: "Twitter secundario", url: LINKS.twitter_alt, target: "twitter_alt", isAdult: true },
-    ],
-  },
-  {
-    name: "TikTok",
-    url: LINKS.tiktok,
-    target: "tiktok",
-    icon: <SiTiktok size={24} />,
-    bgColor: "bg-white",
-    iconColor: "text-white",
-  },
-  {
-    name: "YouTube",
-    url: LINKS.youtube,
-    target: "youtube",
-    icon: <SiYoutube size={24} />,
-    bgColor: "bg-white",
-    iconColor: "text-[#FF0000]",
-  },
   // {
-  //   name: "Telegram",
-  //   icon: <SiTelegram size={24} />,
+  //   name: "Twitter",
+  //   icon: <SiX size={24} />,
   //   bgColor: "bg-white",
-  //   iconColor: "text-[#0088cc]",
+  //   iconColor: "text-white",
   //   urls: [
-  //     { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
-  //     { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
-  //     { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
+  //     { label: "Twitter principal", url: LINKS.twitter_main, target: "twitter_main", isAdult: true },
+  //     { label: "Twitter secundario", url: LINKS.twitter_alt, target: "twitter_alt", isAdult: true },
   //   ],
   // },
+  // {
+  //   name: "TikTok",
+  //   url: LINKS.tiktok,
+  //   target: "tiktok",
+  //   icon: <SiTiktok size={24} />,
+  //   bgColor: "bg-white",
+  //   iconColor: "text-white",
+  // },
+  // {
+  //   name: "YouTube",
+  //   url: LINKS.youtube,
+  //   target: "youtube",
+  //   icon: <SiYoutube size={24} />,
+  //   bgColor: "bg-white",
+  //   iconColor: "text-[#FF0000]",
+  // },
   {
-    name: "Instagram",
-    icon: <SiInstagram size={24} />,
+    name: "Fansly",
+    icon: <GiLockedHeart size={24} />,
+    url: LINKS.fansly,
+    target: "fansly",
+    isAdult: true,
+  },
+  {
+    name: "Tecito",
+    icon: <BsCupHot size={24} />,
+    url: LINKS.tecito,
+    target: "tecito",
+    isAdult: true,
+  },
+  {
+    name: "Telegram",
+    icon: <SiTelegram size={24} />,
     bgColor: "bg-white",
-    iconColor: "text-[#E4405F]",
+    iconColor: "text-[#0088cc]",
     urls: [
-      { label: "Instagram Principal", url: LINKS.instagram_main, target: "instagram_main", isAdult: true },
-      { label: "Instagram Secundario", url: LINKS.instagram_alt, target: "instagram_alt", isAdult: true },
+      { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
+      { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
+      { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
     ],
   },
-  {
-    name: "Facebook",
-    icon: <FaFacebook size={24} />,
-    bgColor: "bg-white",
-    iconColor: "text-[#1877F2]",
-    urls: [
-      { label: "Facebook", url: LINKS.facebook_main, target: "facebook_main", isAdult: true },
-      { label: "Facebook secundario", url: LINKS.facebook_alt, target: "facebook_alt", isAdult: true },
-    ]
-  },
+  // {
+  //   name: "Instagram",
+  //   icon: <SiInstagram size={24} />,
+  //   bgColor: "bg-white",
+  //   iconColor: "text-[#E4405F]",
+  //   urls: [
+  //     { label: "Instagram Principal", url: LINKS.instagram_main, target: "instagram_main", isAdult: true },
+  //     { label: "Instagram Secundario", url: LINKS.instagram_alt, target: "instagram_alt", isAdult: true },
+  //   ],
+  // },
+  // {
+  //   name: "Facebook",
+  //   icon: <FaFacebook size={24} />,
+  //   bgColor: "bg-white",
+  //   iconColor: "text-[#1877F2]",
+  //   urls: [
+  //     { label: "Facebook", url: LINKS.facebook_main, target: "facebook_main", isAdult: true },
+  //     { label: "Facebook secundario", url: LINKS.facebook_alt, target: "facebook_alt", isAdult: true },
+  //   ]
+  // },
   // {
   //   name: "Snapchat",
   //   icon: <BsSnapchat size={24} />,

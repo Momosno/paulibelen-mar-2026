@@ -57,7 +57,7 @@ const allItems: GridItem[] = [
     links: [
       { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
       { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
-      { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
+      { label: "Mi chat", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
     ],
   },
   {
@@ -120,7 +120,7 @@ const allItems: GridItem[] = [
 
 // Keep the remaining Pauli Belen cards configured above, but hidden while the
 // page mirrors Sofi Maure's single featured-content layout.
-const defaultItems: GridItem[] = allItems.slice(0, 2);
+const defaultItems: GridItem[] = allItems.slice(0, 1);
 
 export default function ImageGrid({ items = defaultItems }: ImageGridProps) {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);

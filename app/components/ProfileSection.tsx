@@ -47,8 +47,11 @@ export default function ProfileSection({
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0f] via-black/10 to-black/10" />
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-4 pb-2">
           <h1 className="text-[32px] font-extrabold tracking-tight text-white drop-shadow-lg sm:text-[38px]">{name}</h1>
-          <p className="mt-2 flex items-center gap-2 text-base font-semibold text-white/65">
+          <p className="mt-2 flex items-center gap-2 text-base font-semibold text-white/90">
             <span className="size-2.5 rounded-full bg-emerald-500" /> Activa ahora
+          </p>
+          <p className="mt-2 mb-2 flex items-center gap-2 text-base font-bold text-white/90">
+            <span className="" /> Hablamos? 😍
           </p>
         </div>
       </div>

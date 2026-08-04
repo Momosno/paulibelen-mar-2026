@@ -15,8 +15,8 @@ export const LINKS = {
   onlyfans_free: "https://onlyfans.com/paulibelenfree/c23",
 
   telegram_free: "https://t.me/paulibelenfree",
-  telegram_catalogo: "https://t.me/paulibelencatalogo",
-  telegram_free2: "https://t.me/paulibelenfree2",
+  telegram_catalogo: "https://t.me/paulibelenfree3",
+  telegram_free2: "https://t.me/soypaulibelen1",
 
   twitter_main: "https://x.com/paulibelenof",
   twitter_alt: "https://x.com/xpaulibelen1x?s=21",

@@ -41,7 +41,7 @@ export default function OfferCountdown() {
   return (
     <section className="flex flex-col items-center" aria-label="Oferta por tiempo limitado">
       <div className="rounded-md bg-zinc-700 px-4 py-1.5 text-lg font-extrabold text-white shadow-lg">
-        50% OFF
+        75% OFF
       </div>
       <div className="mt-5 flex items-start gap-2" aria-live="polite">
         <TimeUnit value={hours} label="hrs" />

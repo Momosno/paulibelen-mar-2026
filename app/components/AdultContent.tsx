@@ -26,14 +26,14 @@ export default function AdultContent() {
           />
 
           <div className="flex flex-col items-center px-3 sm:px-4">
+            <div className="mt-2 mb-2 w-full">
+              <SocialLinks />
+            </div>
             <div className="mt-3 w-full">
               <ImageGrid />
             </div>
-            <div className="mt-4 mb-3 w-full">
-              <OfferCountdown />
-            </div>
             <div className="mt-4 w-full">
-              <SocialLinks />
+              <OfferCountdown />
             </div>
             <Footer />
           </div>
