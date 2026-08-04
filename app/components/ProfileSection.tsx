@@ -15,7 +15,7 @@ interface ProfileSectionProps {
 export default function ProfileSection({
   name = "Pauli Belen",
   bio,
-  profileImage = "/2.webp",
+  profileImage = "/header.jpeg",
   visitCount,
 }: ProfileSectionProps) {
   const [imageError, setImageError] = useState(false);

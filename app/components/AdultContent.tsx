@@ -4,7 +4,7 @@ import ImageGrid from "./ImageGrid";
 import OfferCountdown from "./OfferCountdown";
 import Footer from "./Footer";
 
-const PROFILE_IMAGE = "/2.webp";
+const PROFILE_IMAGE = "/header.jpeg";
 const PROFILE_NAME = "Pauli Belen";
 
 /**
