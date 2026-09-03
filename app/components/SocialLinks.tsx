@@ -92,7 +92,7 @@ const defaultLinks: SocialLink[] = [
     urls: [
       { label: "Canal Free ", url: LINKS.telegram_free, target: "telegram_free", isAdult: true },
       { label: "Catálogo", url: LINKS.telegram_catalogo, target: "telegram_catalogo", isAdult: false },
-      { label: "Canal secundario", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
+      { label: "Mi Chat", url: LINKS.telegram_free2, target: "telegram_free2", isAdult: true },
     ],
   },
   // {
